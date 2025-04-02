@@ -1,3 +1,4 @@
+source 'https://rubygems.org'
 # Public gems from RubyGems:
 gem 'bundler-audit', '~> 0.9', require: false
 gem 'chutney', '~> 3.9', require: false
