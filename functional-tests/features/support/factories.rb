@@ -9,7 +9,7 @@ FM.factory :booking_request, naming: :json do
   totalprice { Faker::Commerce.price(range: 50..500).to_i }
   depositpaid { [true, false].sample }
   bookingdates { FM[:booking_dates].build }
-  additionalneeds { "Breakfast" }
+  additionalneeds { ['Breakfast', 'Newspaper', 'Wakeup Call', nil].sample } # samples from a list of needs including nil
 end
 
 FM.factory :booking_dates, naming: :json do

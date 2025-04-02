@@ -1,3 +1,4 @@
+@t
 Feature: Bookings
 
   Description: This feature file contains scenarios for testing the booking system.
@@ -29,20 +30,21 @@ Feature: Bookings
     Then I should receive a '201' response for the delete booking request
     And the booking should be deleted successfully
 
+  @negative
+  Scenario: Create a booking with missing headers
+    Given I am an authorised user
+    When I send a booking request with missing headers
+    Then I should receive a '500' response for the booking request
+    And the booking should not be created
+
+  @negative
+  Scenario: Create a booking with invalid headers
+    Given I am an authorised user
+    When I send a booking request with invalid headers
+    Then I should receive a '500' response for the booking request
+    And the booking should not be created
+
 # Further testing considerations
-
-# Scenario: Create a booking with missing headers
-#   Given I am an authorised user
-#   When I send a booking request with missing headers
-#   Then I should receive a '400' response for the booking request
-#   And the booking should not be created
-
-# Scenario: Create a booking with invalid headers
-#   Given I am an authorised user
-#   When I send a booking request with invalid headers
-#   Then I should receive a '400' response for the booking request
-#   And the booking should not be created
-
 
 # Scenario: Create a booking with invalid request body
 #   Given I am an authorised user
@@ -68,4 +70,16 @@ Feature: Bookings
 # Scenario: Create a booking with an expired token
 #   Given I am an authorised user with an expired token
 #   When I send a valid booking request
-#   Then I should receive a '401' response for the booking request
+#   Then I should receive a '403' response for the booking request
+
+
+# Scenario: Delete a booking with an invalid booking ID
+#   Given I am an authorised user
+#   When I send a delete booking request with an invalid booking ID
+#   Then I should receive a '404' response for the delete booking request
+
+
+# Scenario: Update a booking with an invalid booking ID
+#   Given I am an authorised user
+#   When I send an update booking request with an invalid booking ID
+#   Then I should receive a '404' response for the update booking request

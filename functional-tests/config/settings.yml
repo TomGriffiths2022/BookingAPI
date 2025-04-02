@@ -5,6 +5,12 @@ booking_app_service:
   required_headers:
     Content-Type: application/json
     Accept: application/json
+  invalid_headers:
+    Content-Type: application/string
+    Accept: application/string
+  missing_headers:
+    Content-Type: ""
+    Accept: ""
   url: https://restful-booker.herokuapp.com
   endpoints:
     auth: auth
