@@ -1,0 +1,11 @@
+test:
+  log_level: <%= ENV['LOG_LEVEL'] || 'DEBUG' %>
+
+booking_app_service:
+  required_headers:
+    Content-Type: application/json
+    Accept: application/json
+  url: https://restful-booker.herokuapp.com
+  endpoints:
+    auth: auth
+    booking: booking
